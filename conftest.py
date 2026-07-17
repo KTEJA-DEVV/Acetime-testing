@@ -13,11 +13,20 @@ def pytest_addoption(parser):
 def browser(request,playwright_instance):
     browser_name = request.config.getoption("--test-browser") or Browser_config['default_browser']
     if browser_name == "firefox":
-        browser= playwright_instance.firefox.launch(headless=Browser_config['headless'])
+        browser= playwright_instance.firefox.launch(headless=Browser_config['headless'],args=[
+        '--use-fake-device-for-media-stream',
+        '--use-fake-ui-for-media-stream',
+    ])
     elif browser_name == "webkit":
-        browser=playwright_instance.webkit.launch(headless=Browser_config['headless'])
+        browser=playwright_instance.webkit.launch(headless=Browser_config['headless'],args=[
+        '--use-fake-device-for-media-stream',
+        '--use-fake-ui-for-media-stream',
+    ])
     else:
-        browser = playwright_instance.chromium.launch(headless=Browser_config['headless'])
+        browser = playwright_instance.chromium.launch(headless=Browser_config['headless'],args=[
+        '--use-fake-device-for-media-stream',
+        '--use-fake-ui-for-media-stream',
+    ])
 
     yield browser
     browser.close()
