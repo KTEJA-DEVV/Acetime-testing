@@ -18,6 +18,12 @@ class LoginPage:
         self.page.get_by_placeholder("you@example.com").fill(email)
         self.page.get_by_placeholder("Enter your password").fill(password)
         self.page.get_by_role('button',name="Sign In").click()
+        skip_btn=self.page.get_by_role("button",name='Skip').click()
+        try:
+            expect(skip_btn).to_be_visible(timeout=5000)
+            skip_btn.click()
+        except:
+            pass
         self.page.wait_for_selector('p:has-text("Start a new call or join an existing one")')
         expect(self.page.get_by_text('Start a new call or join an existing one')).to_be_visible()
 
