@@ -1,0 +1,9 @@
+.env
+report-*.html
+*.png
+__pycache__/
+*.pyc
+.pytest_cache/
+.idea/
+venv/
+.venv/
