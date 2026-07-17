@@ -16,7 +16,7 @@ class CallsPage:
         expect(start_call_btn).to_be_visible()
         start_call_btn.click()
         expect(self.page.get_by_text('Generate Image')).to_be_visible()
-        self.page.get_by_title('End call').click()
+        self.page.get_by_role("button",name='End call').click()
         self.page.screenshot(path='screenshot.png')
 
     def joincall(self):
