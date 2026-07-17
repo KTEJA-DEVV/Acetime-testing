@@ -18,7 +18,7 @@ class LoginPage:
         self.page.get_by_placeholder("you@example.com").fill(email)
         self.page.get_by_placeholder("Enter your password").fill(password)
         self.page.get_by_role('button',name="Sign In").click()
-        skip_btn=self.page.get_by_role("button",name='Skip').click()
+        skip_btn=self.page.get_by_role("button",name='Skip')
         try:
             expect(skip_btn).to_be_visible(timeout=5000)
             skip_btn.click()
